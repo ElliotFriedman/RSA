@@ -3,7 +3,7 @@
 #include <unistd.h>
 
 //thank you wikipedia
-unsigned int gcd(unsigned int u, unsigned int v)
+unsigned long long gcd(unsigned int u, unsigned long long v)
 {
     // simple cases (termination)
     if (u == v)
@@ -34,15 +34,18 @@ unsigned int gcd(unsigned int u, unsigned int v)
     return gcd((v - u) >> 1, u);
 }
 
+
+//strtoll(const char *restrict str, char **restrict endptr, int base);
+
 int main(int argc, char **argv)
 {
 
 	if (argc == 3)
 	{
-		int x = atoi(argv[1]);
-		int y = atoi(argv[2]);
+		unsigned long long x = strtoll(argv[1], 0, 10);
+		unsigned long long y = strtoll(argv[2], 0, 10);
 		//factor GCD
-		printf("GCD of %d, %d = %d\n", x, y, gcd(x, y));
+		printf("GCD of %llu, %llu = %llu\n", x, y, gcd(x, y));
 	}
 	else
 		printf("Usage: ./GCD x y\n");
